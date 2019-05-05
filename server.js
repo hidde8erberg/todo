@@ -3,7 +3,7 @@ const mustache = require('mustache-express');
 const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 
-mongoose.connect('mongodb://localhost:27017/todo', {useNewUrlParser: true}).then( () => {
+mongoose.connect('mongodb://localhost:27017/todos', {useNewUrlParser: true}).then( () => {
     console.log('Database connected');
 }).catch(err => console.log(err));
 

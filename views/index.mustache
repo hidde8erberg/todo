@@ -5,12 +5,24 @@
   </head>
   <body>
     <h1>Todo App</h1>
-    <script type="text/template" id="list">
-      <ul>
-        {{#names}}
-  		  <li>{{name}}</li>
-        {{/names}}
-      </ul>
-    </script>
+    <form action="/add" method="post">
+      <input type="text" name="description">
+      <button type="submit">add</button>
+    </form>
+    <ul>
+      {{#todos}}
+      <form action="/done/{{_id}}" method="post">
+      <li>{{description}} <button type="submit">done</button></li>
+      </form>
+      {{/todos}}
+    </ul>
+    <h2>Done</h2>
+    <ul>
+      {{#done}}
+      <form action="/delete/{{_id}}" method="post">
+      <li>{{description}} <button type="submit">delete</button></li>
+      </form>
+      {{/done}}
+    </ul>
   </body>
 </html>
