@@ -11,5 +11,10 @@
     "url": "todo"
   },
   "author": "Hidde Agterberg",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.5.5",
+    "mustache-express": "^1.2.8"
+  }
 }
