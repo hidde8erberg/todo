@@ -37,7 +37,7 @@ router.post('/done/:id', (req, res) => {
 });
 
 router.post('/delete/:id', (req, res) => {
-    Todo.findOneAndDelete(req.params.id).then(() => {
+    Todo.findByIdAndDelete(req.params.id).then(() => {
         res.redirect('/');
     }).catch(err => {
         console.log(err);
