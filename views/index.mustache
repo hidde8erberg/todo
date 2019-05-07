@@ -1,28 +1,56 @@
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>todo</title>
-  </head>
-  <body>
-    <h1>Todo App</h1>
-    <form action="/add" method="post">
-      <input type="text" name="description">
-      <button type="submit">add</button>
+<head>
+  <meta charset="utf-8">
+  <title>todo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+<div class="d-flex flex-row">
+<div class="col col-centered">
+
+  <h1>Todo App</h1>
+  <form action="/add" method="post">
+    <div class="input-group">
+    <input type="text" name="description" class="form-control">
+    <button type="submit" class="btn btn-primary">add</button>
+    </div>
+  </form>
+
+  <ul class="list-group">
+    {{#todos}}
+    <form action="/done/{{_id}}" method="post">
+    <div class="d-table-cell w-100">
+    <li class="list-group-item">{{description}}</li>
+    </div>
+    <div class="d-table-cell align-middle">
+    <button type="submit" class="btn btn-lg btn-primary float-right">done</button>
+    </div>
     </form>
-    <ul>
-      {{#todos}}
-      <form action="/done/{{_id}}" method="post">
-      <li>{{description}} <button type="submit">done</button></li>
-      </form>
-      {{/todos}}
-    </ul>
-    <h2>Done</h2>
-    <ul>
-      {{#done}}
-      <form action="/delete/{{_id}}" method="post">
-      <li>{{description}} <button type="submit">delete</button></li>
-      </form>
-      {{/done}}
-    </ul>
-  </body>
+    {{/todos}}
+  </ul>
+
+  <h2>Done</h2>
+  <ul class="list-group">
+    {{#done}}
+    <form action="/delete/{{_id}}" method="post">
+    <div class="d-table-cell w-100">
+    <li class="list-group-item">{{description}}</li>
+    </div>
+    <div class="d-table-cell align-middle">
+    <button type="submit" class="btn btn-lg btn-danger">delete</button>
+    </div>
+    </form>
+    {{/done}}
+  </ul>
+</div>
+</div>
+</div>
+
+</body>
 </html>
