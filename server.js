@@ -17,6 +17,7 @@ app.engine('mustache', m);
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 app.use('/', routes);
+//app.use(express.static(__dirname + '/css'));
 
 app.listen(3000, () => {
     console.log('listening on port 3000...');
