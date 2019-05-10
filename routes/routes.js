@@ -2,8 +2,10 @@ const router = require('express').Router();
 const Todo = require('../models/todos');
 const winston = require('winston');
 const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+    ),
     transports: [
       new winston.transports.File({ filename: 'info.log' })
     ]
@@ -22,7 +24,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-    logger.info(req.body.description);
+    logger.info('Added: ' + req.body.description);
     let t = new Todo({description: req.body.description});
     t.save().then(result => {
         //console.log(result);
